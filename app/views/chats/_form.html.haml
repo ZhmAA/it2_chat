@@ -1,0 +1,8 @@
+= simple_form_for @chat do |f|
+  - @users.each do |user|
+    %p
+      - if user != current_user
+        = f.fields_for :users do |ff|
+          = ff.radio_button :check, user.id 
+        = user.email
+  = f.button :submit, class: 'btn btn-primary'

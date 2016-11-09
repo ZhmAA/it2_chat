@@ -1,0 +1,9 @@
+.card
+  .row
+    .col-md-11
+      %p.card-text
+        %span.text-muted
+          = message.user.name
+          at #{message.create_date} says
+        %br/
+        = message.field

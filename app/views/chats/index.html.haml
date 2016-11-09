@@ -1,0 +1,8 @@
+%h1 All Users
+- @users.each do |user|
+  %p
+    = user.email
+%h1 Your chats
+%p= link_to 'Create new chat', new_chat_path, class: 'btn btn-primary'
+%ul
+  = render @chats
