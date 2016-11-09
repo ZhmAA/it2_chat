@@ -2,8 +2,6 @@
 - @users.each do |user|
   %p
     = user.email
-    - if user != current_user
-      = link_to "Chat with #{user.email}"
 %h1 Your chats
 %p= link_to 'Create new chat', new_chat_path, class: 'btn btn-primary'
 %ul

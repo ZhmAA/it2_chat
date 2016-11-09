@@ -1,7 +1,8 @@
 class ChatsController < ApplicationController
+  before_action :users_all, only: [:index, :new]
+
   def index
-    @users = User.all.reverse
-    @chats = current_user.chats.all
+    @chats = current_user.chats.all.reverse
   end
 
   def show
@@ -9,23 +10,27 @@ class ChatsController < ApplicationController
     @message = Message.new
   end
   
-  #def new
-  #  @chat = current_user.chats.create(params[:user_id])
-  #  @chat.save
-  #  redirect_to chat_path(@chat.id)
-  #end
-
   def new
-    @chat = current_user.chats.new
+    @chat = Chat.new
   end
 
   def create
-    @chat = current_user.chats.create(params[:user_id])
+    @chat = Chat.new
     if @chat.save
-      flash[:success] = "Chat created successful"
-      redirect_to chats_path
+      second_user_id = params[:chat][:users].select {|key,value| key == 'check'}.values
+      add_user = User.find(second_user_id)
+      @chat.users << current_user << add_user
+      flash[:notice] = "Chat created successful"
+      redirect_to chat_path(@chat.id)
     else
+      flash[:error] = "Something wrong"
       render 'new'
     end
+  end
+
+  private
+
+  def users_all
+    @users = User.all.reverse
   end
 end
