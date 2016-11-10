@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
+gem 'omniauth-facebook'
+gem 'omniauth-vkontakte'
 
 gem 'haml'
 gem 'bootstrap', '~> 4.0.0.alpha5'
