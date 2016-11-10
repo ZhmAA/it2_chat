@@ -1,12 +1,15 @@
-%h1 All Users
-- @users.each do |user|
-  %p
-    = user.email
-    - if user_signed_in? && user.online?
-      = "Online"
-    - else
-      = "Offline"
-%h1 Your chats
-%p= link_to 'Create new chat', new_chat_path, class: 'btn btn-primary'
-%ul
-  = render @chats
+.row
+  .col-md-5.column
+    %h2 Available Users
+    - @users.each do |user|
+      %p
+        = user.email
+        - if user_signed_in? && user.online?
+          %span#online_status Online
+        - else
+          %span#offline_status Offline
+  .col-md-6.column
+    %h2 Your Chats
+    %p= link_to 'Create new chat', new_chat_path, class: 'btn btn-primary'
+    %ul
+      = render @chats

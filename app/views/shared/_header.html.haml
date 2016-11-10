@@ -4,7 +4,11 @@
       You log in as #{current_user.email}
       \#{link_to "Sign Out", destroy_user_session_path, :method => :delete, :class => "btn btn-danger btn-sm"}
   - else
-    = link_to "Vk Log In", user_vkontakte_omniauth_authorize_path, :class => "btn btn-primary btn-sm"
-    = link_to "Fb Log In", user_facebook_omniauth_authorize_path, :class => "btn btn-primary btn-sm"
-    = link_to "Sign Up", new_user_registration_path, :class => "btn btn-primary btn-sm"
-    = link_to "Log In", new_user_session_path, :class => "btn btn-primary btn-sm"
+    %p 
+      Log in with you social network
+      = link_to "Vk Log In", user_vkontakte_omniauth_authorize_path, :class => "btn btn-primary btn-sm"
+      = link_to "Fb Log In", user_facebook_omniauth_authorize_path, :class => "btn btn-primary btn-sm"
+      or just use your email to
+      = link_to "Sign Up", new_user_registration_path, :class => "btn btn-primary btn-sm"
+      or
+      = link_to "Log In", new_user_session_path, :class => "btn btn-primary btn-sm"
