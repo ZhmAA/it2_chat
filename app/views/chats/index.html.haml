@@ -2,6 +2,10 @@
 - @users.each do |user|
   %p
     = user.email
+    - if user_signed_in? && user.online?
+      = "Online"
+    - else
+      = "Offline"
 %h1 Your chats
 %p= link_to 'Create new chat', new_chat_path, class: 'btn btn-primary'
 %ul
